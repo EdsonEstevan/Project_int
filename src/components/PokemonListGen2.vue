@@ -1,37 +1,24 @@
-<script>
-import PokeApi from "@/api/pokemons.js";
-const pokeApi = new PokeApi();
-export default {
-  data() {
-    return {
-      pokemon: {
-        name: "",
-        url: "",
-        id: "",
-      },
-      pokemons: [],
-    };
-  },
-  async created() {
-    const t_pokemons = await pokeApi.buscarTodosOsPokemonsGen2();
-    for (const t_poke of t_pokemons) {
-      const poke = await pokeApi.buscarPokemonsTipos(t_poke.url);
-      console.log(poke);
-      this.pokemons.push({
-        id: poke.id,
-        ...t_poke,
-        game_indices: { ...poke.game_indices },
-        sprites: { ...poke.sprites },
-      });
-    }
-  },
-};
+<script setup>
+import { onMounted  } from "vue";
+import { usePokedexStore } from "../stores/pokedex";
+const pokedexStore = usePokedexStore()
+
+onMounted(async () => {
+  await pokedexStore.getGen2()
+})
+  
 </script>
 
 <template>
-  <h1 class="titulo">Pokedex Gen 2</h1>
+  <h1 class="titulo">Pokedex Gen 2 - novo</h1>
+  <!-- {{ pokedexStore.filtrados }} -->
   <div class="pokemonlist-area">
-    <div class="pokemon-area" v-for="pokemon in pokemons" :key="pokemon">
+    <div
+      class="pokemon-area"
+      v-for="pokemon in pokedexStore.gen2"
+      :key="pokemon"
+      @click="ShowDetail"
+    >
       <div class="img-area">
         <img class="pokemon-img" :src="pokemon.sprites.front_default" />
       </div>

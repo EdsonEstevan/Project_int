@@ -10,13 +10,13 @@ export default {
   <header>
     <div class="area-button">
       <RouterLink to="/" class="link-button"
-        ><input type="button" class="button1"
+        > <p>Gen 1</p><input type="button" class="button1"
       /></RouterLink>
       <RouterLink to="/gen2" class="link-button"
-        ><input type="button" class="button2"
+        > Gen 2<input type="button" class="button2"
       /></RouterLink>
       <RouterLink to="/gen3" class="link-button"
-        ><input type="button" class="button3"
+        >Gen 3<input type="button" class="button3"
       /></RouterLink>
     </div>
     <div class="area-pesquisa"><PokemonSearch /></div>

@@ -1,44 +1,19 @@
 <template>
-  <div class="detail">
-    <div class="detail-view" v-if="show">
-      <div v-if="pokemon" class="image">
-        <img :src="imageUrl + pokemon.id + '.png'" alt="" />
-      </div>
-      <div v-if="pokemon" class="data">
-        <h2>{{ pokemon.name }}</h2>
-        <div class="property">
-          <div class="left">Pokedex number</div>
-          <div class="right">{{ pokemon.id }}</div>
-        </div>
-        <h3>Pokemon Types</h3>
-        <div class="types">
-          <div
-            class="type"
-            v-for="(value, index) in pokemon.types"
-            :key="'value' + index"
-          >
-            {{ value.type.name }}
-          </div>
-        </div>
-        <h3>Abilities</h3>
-        <div class="abilities">
-          <div
-            class="ability"
-            v-for="(value, index) in pokemon.abilities"
-            :key="'value' + index"
-          >
-            {{ value.ability.name }}
-          </div>
-        </div>
-      </div>
-      <h2 v-else>The pokemon was not found</h2>
-      <button class="close" @click="closeDetail">close</button>
-    </div>
-    <i v-else class="fas fa-spinner fa-spin"></i>
-  </div>
+   <div>
+    <h2>{{ selectedPokemon.name }}</h2>
+    <p>Type: {{ selectedPokemon.type }}</p>
+    <p>Description: {{ selectedPokemon.description }}</p>
+    <p>Attacks:</p>
+    <ul>
+      <li v-for="attack in selectedPokemon.attacks" :key="attack.id">
+        {{ attack.name }}
+      </li>
+    </ul>
+ </div>
 </template>
 
 <script>
+
 export default {
   props: ["pokemonUrl", "imageUrl"],
   data: () => {
@@ -70,6 +45,11 @@ export default {
     this.fetchData();
   },
 };
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
