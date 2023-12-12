@@ -1,3 +1,8 @@
+surge do site:
+
+-> pokedexedson.surge.sh
+
+
 # Project_int
 
 This template should help get you started developing with Vue 3 in Vite.
