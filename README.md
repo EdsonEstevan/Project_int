@@ -2,6 +2,12 @@ surge do site:
 
 -> pokedexedson.surge.sh
 
+site tutorial:
+
+-> https://github.com/EdsonEstevan/filmestrabweb
+
+obs: aparece como "joão vitor" pq quando fui fazer commit tava com o git dele no vscode
+
 
 # Project_int
 
