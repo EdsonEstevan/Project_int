@@ -1,6 +1,6 @@
 surge do site:
 
--> pokedexedson.surge.sh
+-> https://pokdxfinal.surge.sh/
 
 site tutorial:
 
